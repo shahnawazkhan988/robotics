@@ -1,0 +1,821 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="requirements" id="7" x="-141" y="73">
+    <statement name="Architecture_requirements">
+      <block type="simple_requirement" id="12">
+        <field name="req_id">A10</field>
+        <field name="title">Four Kilobots</field>
+        <next>
+          <block type="simple_requirement" id="14">
+            <field name="req_id">A20</field>
+            <field name="title">Straight-line</field>
+            <next>
+              <block type="simple_requirement" id="16">
+                <field name="req_id">A30</field>
+                <field name="title"> initial state, General (light set to Blue)</field>
+                <next>
+                  <block type="simple_requirement" id="18">
+                    <field name="req_id">A40</field>
+                    <field name="title"> initial state, Three Lieutenants (light set to Green)</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="SoS$s" id="1" x="397" y="84">
+    <field name="name">Kilombo</field>
+    <field name="sos_type">acknowledged</field>
+    <field name="#system">+</field>
+    <field name="#evolution">+</field>
+    <field name="#dependability_guarantee">+</field>
+    <field name="#behaviour">+</field>
+    <field name="#security">+</field>
+    <comment pinned="false" h="159" w="767">This is an example System-of-Systems (SoS) block named "example_block", on the work-space.
+
+You may:
+ 1. Drag the block/work-space with the mouse.
+ 2. Minimize / Maximize / Partially minimize a block by double clicking on it.
+ 3. Drag and drop new blocks from the Toolbox from *left* hand side.
+ 4. Add related blocks to this block by clicking (+) drop-down below.
+ 5. Right click on the block/work-space to see a menu.
+ 6. Close this *comment* by clicking on the (?) button.
+    </comment>
+    <statement name="is_composed_of:system">
+      <block type="CS$s" id="2">
+        <field name="cardinality">1</field>
+        <field name="name">General</field>
+        <field name="system_type">autonomous</field>
+        <field name="#boundary">+</field>
+        <field name="#state_space">+</field>
+        <field name="#HMI">+</field>
+        <field name="#CPS">+</field>
+        <field name="#service">+</field>
+        <field name="#role_player">+</field>
+        <field name="#physical_system">+</field>
+        <field name="#RUI">+</field>
+        <field name="#dependability_guarantee">+</field>
+        <field name="#fault_containment_region">+</field>
+        <field name="#MAPE_algorithm">+</field>
+        <field name="#security">+</field>
+        <field name="#clock">+</field>
+        <field name="#system_resource">+</field>
+        <field name="#architectural_style">+</field>
+        <field name="#subsystem">+</field>
+        <field name="#state_variable">+</field>
+        <field name="#interface">+</field>
+        <field name="#dynamicity">+</field>
+        <statement name="has_a:state_space">
+          <block type="state_space$i" id="19">
+            <field name="name">SSGeneral</field>
+            <field name="#state">+</field>
+            <statement name="has:state">
+              <block type="state$s" id="20">
+                <field name="name">Initial</field>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <statement name="provides:service">
+          <block type="service$s" id="21" collapsed="true">
+            <field name="name">Decide Attack</field>
+            <field name="#state_variable">+</field>
+          </block>
+        </statement>
+        <statement name="has:RUI">
+          <block type="RUMI$s" id="22">
+            <field name="name">GeneralInterface</field>
+            <field name="has_connection">FALSE</field>
+            <field name="#connecting_strategy">+</field>
+            <field name="#interface_specification">+</field>
+            <field name="#interface_port">+</field>
+            <field name="#afferent_environment">+</field>
+            <field name="#efferent_environment">+</field>
+            <field name="#interface_model">+</field>
+            <field name="#service">+</field>
+            <field name="#message">+</field>
+            <field name="#RUMI">+</field>
+            <field name="#probe">+</field>
+            <field name="#security">+</field>
+            <statement name="exchanges:message">
+              <block type="message$s" id="23" collapsed="true">
+                <field name="name">Attack</field>
+                <field name="transport_type">PAR_message</field>
+                <field name="header">  ?  </field>
+                <field name="data_field">  ?  </field>
+                <field name="#message_classification">+</field>
+                <field name="#trailer">+</field>
+              </block>
+            </statement>
+            <statement name="connects:RUMI">
+              <block type="__link" id="45">
+                <field name="link_to">RUMI / Lieutenant1Interface</field>
+                <data>RUMI : 32 : 0</data>
+                <next>
+                  <block type="__link" id="46">
+                    <field name="link_to">RUMI / Lieutenant2Interface</field>
+                    <data>RUMI : 37 : 0</data>
+                    <next>
+                      <block type="__link" id="47">
+                        <field name="link_to">RUMI / Lieutenant3Interface</field>
+                        <data>RUMI : 42 : 0</data>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <statement name="has:state_variable">
+          <block type="state_variable$s" id="24">
+            <field name="name">Led</field>
+            <field name="value">Blue</field>
+            <field name="#state">+</field>
+            <statement name="describes_a:state">
+              <block type="__link" id="25">
+                <field name="link_to">State / Initial</field>
+                <data>state : 20 : 0</data>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="CS$s" id="26">
+            <field name="cardinality">1</field>
+            <field name="name">Lieutenant1</field>
+            <field name="system_type">autonomous</field>
+            <field name="#boundary">+</field>
+            <field name="#state_space">+</field>
+            <field name="#HMI">+</field>
+            <field name="#CPS">+</field>
+            <field name="#service">+</field>
+            <field name="#role_player">+</field>
+            <field name="#physical_system">+</field>
+            <field name="#RUI">+</field>
+            <field name="#dependability_guarantee">+</field>
+            <field name="#fault_containment_region">+</field>
+            <field name="#MAPE_algorithm">+</field>
+            <field name="#security">+</field>
+            <field name="#clock">+</field>
+            <field name="#system_resource">+</field>
+            <field name="#architectural_style">+</field>
+            <field name="#subsystem">+</field>
+            <field name="#state_variable">+</field>
+            <field name="#interface">+</field>
+            <field name="#dynamicity">+</field>
+            <statement name="has_a:state_space">
+              <block type="state_space$i" id="29">
+                <field name="name">SSLieutenant1</field>
+                <field name="#state">+</field>
+                <statement name="has:state">
+                  <block type="state$s" id="30">
+                    <field name="name">Initial</field>
+                    <next>
+                      <block type="state$s" id="87">
+                        <field name="name">Exchange Message</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <statement name="provides:service">
+              <block type="service$s" id="31" collapsed="true">
+                <field name="name">Wait for comand</field>
+                <field name="#state_variable">+</field>
+                <next>
+                  <block type="service$s" id="88" collapsed="true">
+                    <field name="name">Received Attack</field>
+                    <field name="#state_variable">+</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="has:RUI">
+              <block type="RUMI$s" id="32" collapsed="true">
+                <field name="name">Lieutenant1Interface</field>
+                <field name="has_connection">FALSE</field>
+                <field name="#connecting_strategy">+</field>
+                <field name="#interface_specification">+</field>
+                <field name="#interface_port">+</field>
+                <field name="#afferent_environment">+</field>
+                <field name="#efferent_environment">+</field>
+                <field name="#interface_model">+</field>
+                <field name="#service">+</field>
+                <field name="#message">+</field>
+                <field name="#RUMI">+</field>
+                <field name="#probe">+</field>
+                <field name="#security">+</field>
+              </block>
+            </statement>
+            <statement name="has:state_variable">
+              <block type="state_variable$s" id="33">
+                <field name="name">Led</field>
+                <field name="value">Green</field>
+                <field name="#state">+</field>
+                <statement name="describes_a:state">
+                  <block type="__link" id="34">
+                    <field name="link_to">State / Initial</field>
+                    <data>state : 30 : 0</data>
+                  </block>
+                </statement>
+                <next>
+                  <block type="state_variable$s" id="93">
+                    <field name="name">Led</field>
+                    <field name="value">Red</field>
+                    <field name="#state">+</field>
+                    <statement name="describes_a:state">
+                      <block type="__link" id="94">
+                        <field name="link_to">State / Exchange Message</field>
+                        <data>state : 87 : 0</data>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="CS$s" id="27">
+                <field name="cardinality">1</field>
+                <field name="name">Lieutenant2</field>
+                <field name="system_type">autonomous</field>
+                <field name="#boundary">+</field>
+                <field name="#state_space">+</field>
+                <field name="#HMI">+</field>
+                <field name="#CPS">+</field>
+                <field name="#service">+</field>
+                <field name="#role_player">+</field>
+                <field name="#physical_system">+</field>
+                <field name="#RUI">+</field>
+                <field name="#dependability_guarantee">+</field>
+                <field name="#fault_containment_region">+</field>
+                <field name="#MAPE_algorithm">+</field>
+                <field name="#security">+</field>
+                <field name="#clock">+</field>
+                <field name="#system_resource">+</field>
+                <field name="#architectural_style">+</field>
+                <field name="#subsystem">+</field>
+                <field name="#state_variable">+</field>
+                <field name="#interface">+</field>
+                <field name="#dynamicity">+</field>
+                <statement name="has_a:state_space">
+                  <block type="state_space$i" id="35">
+                    <field name="name">SSLieutenant2</field>
+                    <field name="#state">+</field>
+                    <statement name="has:state">
+                      <block type="state$s" id="36">
+                        <field name="name">Initial</field>
+                        <next>
+                          <block type="state$s" id="89">
+                            <field name="name">Exchange Message</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <statement name="provides:service">
+                  <block type="service$s" id="63" collapsed="true">
+                    <field name="name">Wait for comand</field>
+                    <field name="#state_variable">+</field>
+                    <next>
+                      <block type="service$s" id="92" collapsed="true">
+                        <field name="name">Received Retreat </field>
+                        <field name="#state_variable">+</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="has:RUI">
+                  <block type="RUMI$s" id="37" collapsed="true">
+                    <field name="name">Lieutenant2Interface</field>
+                    <field name="has_connection">FALSE</field>
+                    <field name="#connecting_strategy">+</field>
+                    <field name="#interface_specification">+</field>
+                    <field name="#interface_port">+</field>
+                    <field name="#afferent_environment">+</field>
+                    <field name="#efferent_environment">+</field>
+                    <field name="#interface_model">+</field>
+                    <field name="#service">+</field>
+                    <field name="#message">+</field>
+                    <field name="#RUMI">+</field>
+                    <field name="#probe">+</field>
+                    <field name="#security">+</field>
+                  </block>
+                </statement>
+                <statement name="has:state_variable">
+                  <block type="state_variable$s" id="38">
+                    <field name="name">Led</field>
+                    <field name="value">Green</field>
+                    <field name="#state">+</field>
+                    <statement name="describes_a:state">
+                      <block type="__link" id="39">
+                        <field name="link_to">State / Initial</field>
+                        <data>state : 36 : 0</data>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="state_variable$s" id="95">
+                        <field name="name">Led</field>
+                        <field name="value">Black</field>
+                        <field name="#state">+</field>
+                        <statement name="describes_a:state">
+                          <block type="__link" id="96">
+                            <field name="link_to">State / Exchange Message</field>
+                            <data>state : 89 : 0</data>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="CS$s" id="28">
+                    <field name="cardinality">1</field>
+                    <field name="name">Lieutenant3</field>
+                    <field name="system_type">autonomous</field>
+                    <field name="#boundary">+</field>
+                    <field name="#state_space">+</field>
+                    <field name="#HMI">+</field>
+                    <field name="#CPS">+</field>
+                    <field name="#service">+</field>
+                    <field name="#role_player">+</field>
+                    <field name="#physical_system">+</field>
+                    <field name="#RUI">+</field>
+                    <field name="#dependability_guarantee">+</field>
+                    <field name="#fault_containment_region">+</field>
+                    <field name="#MAPE_algorithm">+</field>
+                    <field name="#security">+</field>
+                    <field name="#clock">+</field>
+                    <field name="#system_resource">+</field>
+                    <field name="#architectural_style">+</field>
+                    <field name="#subsystem">+</field>
+                    <field name="#state_variable">+</field>
+                    <field name="#interface">+</field>
+                    <field name="#dynamicity">+</field>
+                    <statement name="has_a:state_space">
+                      <block type="state_space$i" id="40">
+                        <field name="name">SSLieutenant3</field>
+                        <field name="#state">+</field>
+                        <statement name="has:state">
+                          <block type="state$s" id="41">
+                            <field name="name">Initial</field>
+                            <next>
+                              <block type="state$s" id="90">
+                                <field name="name">Exchange Message</field>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                    <statement name="provides:service">
+                      <block type="service$s" id="64" collapsed="true">
+                        <field name="name">Wait for comand</field>
+                        <field name="#state_variable">+</field>
+                        <next>
+                          <block type="service$s" id="91" collapsed="true">
+                            <field name="name">Received Attack</field>
+                            <field name="#state_variable">+</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="has:RUI">
+                      <block type="RUMI$s" id="42" collapsed="true">
+                        <field name="name">Lieutenant3Interface</field>
+                        <field name="has_connection">FALSE</field>
+                        <field name="#connecting_strategy">+</field>
+                        <field name="#interface_specification">+</field>
+                        <field name="#interface_port">+</field>
+                        <field name="#afferent_environment">+</field>
+                        <field name="#efferent_environment">+</field>
+                        <field name="#interface_model">+</field>
+                        <field name="#service">+</field>
+                        <field name="#message">+</field>
+                        <field name="#RUMI">+</field>
+                        <field name="#probe">+</field>
+                        <field name="#security">+</field>
+                      </block>
+                    </statement>
+                    <statement name="has:state_variable">
+                      <block type="state_variable$s" id="43">
+                        <field name="name">Led</field>
+                        <field name="value">Green</field>
+                        <field name="#state">+</field>
+                        <statement name="describes_a:state">
+                          <block type="__link" id="44">
+                            <field name="link_to">State / Initial</field>
+                            <data>state : 41 : 0</data>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="state_variable$s" id="97">
+                            <field name="name">Led</field>
+                            <field name="value">Red</field>
+                            <field name="#state">+</field>
+                            <statement name="describes_a:state">
+                              <block type="__link" id="98">
+                                <field name="link_to">State / Exchange Message</field>
+                                <data>state : 90 : 0</data>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="sequence_diagram$s" id="59" x="1659" y="678">
+    <field name="name">Byzantine Algorithm</field>
+    <field name="#sub_sequence">+</field>
+    <statement name="has:sub_sequence">
+      <block type="sub_sequence$s" id="60">
+        <field name="name">Rules</field>
+        <field name="#sequence">+</field>
+        <statement name="has:sequence">
+          <block type="service_request$s" id="61" collapsed="true">
+            <field name="arguments_in_CSV">True</field>
+            <field name="on_condition">True</field>
+            <field name="#state_variable">+</field>
+            <field name="#service">+</field>
+            <field name="#RUMI">+</field>
+            <field name="#RUMI">+</field>
+            <field name="#state_variable">+</field>
+            <field name="#sequence">+</field>
+            <field name="#sequence">+</field>
+            <statement name="request:service">
+              <block type="__link" id="62">
+                <field name="link_to">Service / Wait for comand</field>
+                <data>service : 31 : 1</data>
+              </block>
+            </statement>
+            <statement name="source:RUMI">
+              <block type="__link" id="65">
+                <field name="link_to">RUMI / Lieutenant1Interface</field>
+                <data>RUMI : 32 : 1</data>
+              </block>
+            </statement>
+            <statement name="destination:RUMI">
+              <block type="__link" id="66">
+                <field name="link_to">RUMI / GeneralInterface</field>
+                <data>RUMI : 22 : 1</data>
+              </block>
+            </statement>
+            <next>
+              <block type="service_request$s" id="67" collapsed="true">
+                <field name="arguments_in_CSV">True</field>
+                <field name="on_condition">True</field>
+                <field name="#state_variable">+</field>
+                <field name="#service">+</field>
+                <field name="#RUMI">+</field>
+                <field name="#RUMI">+</field>
+                <field name="#state_variable">+</field>
+                <field name="#sequence">+</field>
+                <field name="#sequence">+</field>
+                <statement name="request:service">
+                  <block type="__link" id="68">
+                    <field name="link_to">Service / Wait for comand</field>
+                    <data>service : 63 : 1</data>
+                  </block>
+                </statement>
+                <statement name="source:RUMI">
+                  <block type="__link" id="69">
+                    <field name="link_to">RUMI / Lieutenant2Interface</field>
+                    <data>RUMI : 37 : 1</data>
+                  </block>
+                </statement>
+                <statement name="destination:RUMI">
+                  <block type="__link" id="70">
+                    <field name="link_to">RUMI / GeneralInterface</field>
+                    <data>RUMI : 22 : 1</data>
+                  </block>
+                </statement>
+                <next>
+                  <block type="service_request$s" id="71" collapsed="true">
+                    <field name="arguments_in_CSV">True</field>
+                    <field name="on_condition">True</field>
+                    <field name="#state_variable">+</field>
+                    <field name="#service">+</field>
+                    <field name="#RUMI">+</field>
+                    <field name="#RUMI">+</field>
+                    <field name="#state_variable">+</field>
+                    <field name="#sequence">+</field>
+                    <field name="#sequence">+</field>
+                    <statement name="request:service">
+                      <block type="__link" id="72">
+                        <field name="link_to">Service / Wait for comand</field>
+                        <data>service : 64 : 1</data>
+                      </block>
+                    </statement>
+                    <statement name="source:RUMI">
+                      <block type="__link" id="73">
+                        <field name="link_to">RUMI / Lieutenant3Interface</field>
+                        <data>RUMI : 42 : 1</data>
+                      </block>
+                    </statement>
+                    <statement name="destination:RUMI">
+                      <block type="__link" id="74">
+                        <field name="link_to">RUMI / GeneralInterface</field>
+                        <data>RUMI : 22 : 1</data>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="service_request$s" id="75" collapsed="true">
+                        <field name="arguments_in_CSV">True</field>
+                        <field name="on_condition">True</field>
+                        <field name="#state_variable">+</field>
+                        <field name="#service">+</field>
+                        <field name="#RUMI">+</field>
+                        <field name="#RUMI">+</field>
+                        <field name="#state_variable">+</field>
+                        <field name="#sequence">+</field>
+                        <field name="#sequence">+</field>
+                        <statement name="request:service">
+                          <block type="__link" id="78">
+                            <field name="link_to">Service / Decide Attack</field>
+                            <data>service : 21 : 1</data>
+                          </block>
+                        </statement>
+                        <statement name="source:RUMI">
+                          <block type="__link" id="79">
+                            <field name="link_to">RUMI / GeneralInterface</field>
+                            <data>RUMI : 22 : 1</data>
+                          </block>
+                        </statement>
+                        <statement name="destination:RUMI">
+                          <block type="__link" id="80">
+                            <field name="link_to">RUMI / Lieutenant1Interface</field>
+                            <data>RUMI : 32 : 1</data>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="service_request$s" id="76" collapsed="true">
+                            <field name="arguments_in_CSV">True</field>
+                            <field name="on_condition">True</field>
+                            <field name="#state_variable">+</field>
+                            <field name="#service">+</field>
+                            <field name="#RUMI">+</field>
+                            <field name="#RUMI">+</field>
+                            <field name="#state_variable">+</field>
+                            <field name="#sequence">+</field>
+                            <field name="#sequence">+</field>
+                            <statement name="request:service">
+                              <block type="__link" id="81">
+                                <field name="link_to">Service / Decide Attack</field>
+                                <data>service : 21 : 1</data>
+                              </block>
+                            </statement>
+                            <statement name="source:RUMI">
+                              <block type="__link" id="82">
+                                <field name="link_to">RUMI / GeneralInterface</field>
+                                <data>RUMI : 22 : 1</data>
+                              </block>
+                            </statement>
+                            <statement name="destination:RUMI">
+                              <block type="__link" id="83">
+                                <field name="link_to">RUMI / Lieutenant2Interface</field>
+                                <data>RUMI : 37 : 1</data>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="service_request$s" id="77" collapsed="true">
+                                <field name="arguments_in_CSV">True</field>
+                                <field name="on_condition">True</field>
+                                <field name="#state_variable">+</field>
+                                <field name="#service">+</field>
+                                <field name="#RUMI">+</field>
+                                <field name="#RUMI">+</field>
+                                <field name="#state_variable">+</field>
+                                <field name="#sequence">+</field>
+                                <field name="#sequence">+</field>
+                                <statement name="request:service">
+                                  <block type="__link" id="84">
+                                    <field name="link_to">Service / Decide Attack</field>
+                                    <data>service : 21 : 1</data>
+                                  </block>
+                                </statement>
+                                <statement name="source:RUMI">
+                                  <block type="__link" id="85">
+                                    <field name="link_to">RUMI / GeneralInterface</field>
+                                    <data>RUMI : 22 : 1</data>
+                                  </block>
+                                </statement>
+                                <statement name="destination:RUMI">
+                                  <block type="__link" id="86">
+                                    <field name="link_to">RUMI / Lieutenant3Interface</field>
+                                    <data>RUMI : 42 : 1</data>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="service_request$s" id="99" collapsed="true">
+                                    <field name="arguments_in_CSV">True</field>
+                                    <field name="on_condition">True</field>
+                                    <field name="#state_variable">+</field>
+                                    <field name="#service">+</field>
+                                    <field name="#RUMI">+</field>
+                                    <field name="#RUMI">+</field>
+                                    <field name="#state_variable">+</field>
+                                    <field name="#sequence">+</field>
+                                    <field name="#sequence">+</field>
+                                    <statement name="request:service">
+                                      <block type="__link" id="101">
+                                        <field name="link_to">Service / Received Attack</field>
+                                        <data>service : 88 : 1</data>
+                                      </block>
+                                    </statement>
+                                    <statement name="source:RUMI">
+                                      <block type="__link" id="102">
+                                        <field name="link_to">RUMI / Lieutenant1Interface</field>
+                                        <data>RUMI : 32 : 1</data>
+                                      </block>
+                                    </statement>
+                                    <statement name="destination:RUMI">
+                                      <block type="__link" id="103">
+                                        <field name="link_to">RUMI / Lieutenant2Interface</field>
+                                        <data>RUMI : 37 : 1</data>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="service_request$s" id="100">
+                                        <field name="arguments_in_CSV">True</field>
+                                        <field name="on_condition">True</field>
+                                        <field name="#state_variable">+</field>
+                                        <field name="#service">+</field>
+                                        <field name="#RUMI">+</field>
+                                        <field name="#RUMI">+</field>
+                                        <field name="#state_variable">+</field>
+                                        <field name="#sequence">+</field>
+                                        <field name="#sequence">+</field>
+                                        <statement name="request:service">
+                                          <block type="__link" id="104">
+                                            <field name="link_to">Service / Received Attack</field>
+                                            <data>service : 88 : 1</data>
+                                          </block>
+                                        </statement>
+                                        <statement name="source:RUMI">
+                                          <block type="__link" id="105">
+                                            <field name="link_to">RUMI / Lieutenant1Interface</field>
+                                            <data>RUMI : 32 : 1</data>
+                                          </block>
+                                        </statement>
+                                        <statement name="destination:RUMI">
+                                          <block type="__link" id="106">
+                                            <field name="link_to">RUMI / Lieutenant3Interface</field>
+                                            <data>RUMI : 42 : 1</data>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="service_request$s" id="113">
+                                            <field name="arguments_in_CSV">True</field>
+                                            <field name="on_condition">True</field>
+                                            <field name="#state_variable">+</field>
+                                            <field name="#service">+</field>
+                                            <field name="#RUMI">+</field>
+                                            <field name="#RUMI">+</field>
+                                            <field name="#state_variable">+</field>
+                                            <field name="#sequence">+</field>
+                                            <field name="#sequence">+</field>
+                                            <statement name="request:service">
+                                              <block type="__link" id="115">
+                                                <field name="link_to">Service / Received Retreat </field>
+                                                <data>service : 92 : 1</data>
+                                              </block>
+                                            </statement>
+                                            <statement name="source:RUMI">
+                                              <block type="__link" id="116">
+                                                <field name="link_to">RUMI / Lieutenant2Interface</field>
+                                                <data>RUMI : 37 : 1</data>
+                                              </block>
+                                            </statement>
+                                            <statement name="destination:RUMI">
+                                              <block type="__link" id="117">
+                                                <field name="link_to">RUMI / Lieutenant1Interface</field>
+                                                <data>RUMI : 32 : 1</data>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="service_request$s" id="114">
+                                                <field name="arguments_in_CSV">True</field>
+                                                <field name="on_condition">True</field>
+                                                <field name="#state_variable">+</field>
+                                                <field name="#service">+</field>
+                                                <field name="#RUMI">+</field>
+                                                <field name="#RUMI">+</field>
+                                                <field name="#state_variable">+</field>
+                                                <field name="#sequence">+</field>
+                                                <field name="#sequence">+</field>
+                                                <statement name="request:service">
+                                                  <block type="__link" id="118">
+                                                    <field name="link_to">Service / Received Retreat </field>
+                                                    <data>service : 92 : 1</data>
+                                                  </block>
+                                                </statement>
+                                                <statement name="source:RUMI">
+                                                  <block type="__link" id="120">
+                                                    <field name="link_to">RUMI / Lieutenant2Interface</field>
+                                                    <data>RUMI : 37 : 1</data>
+                                                  </block>
+                                                </statement>
+                                                <statement name="destination:RUMI">
+                                                  <block type="__link" id="119">
+                                                    <field name="link_to">RUMI / Lieutenant3Interface</field>
+                                                    <data>RUMI : 42 : 1</data>
+                                                  </block>
+                                                </statement>
+                                                <next>
+                                                  <block type="service_request$s" id="121">
+                                                    <field name="arguments_in_CSV">True</field>
+                                                    <field name="on_condition">True</field>
+                                                    <field name="#state_variable">+</field>
+                                                    <field name="#service">+</field>
+                                                    <field name="#RUMI">+</field>
+                                                    <field name="#RUMI">+</field>
+                                                    <field name="#state_variable">+</field>
+                                                    <field name="#sequence">+</field>
+                                                    <field name="#sequence">+</field>
+                                                    <statement name="request:service">
+                                                      <block type="__link" id="123">
+                                                        <field name="link_to">Service / Received Attack</field>
+                                                        <data>service : 91 : 1</data>
+                                                      </block>
+                                                    </statement>
+                                                    <statement name="source:RUMI">
+                                                      <block type="__link" id="125">
+                                                        <field name="link_to">RUMI / Lieutenant3Interface</field>
+                                                        <data>RUMI : 42 : 1</data>
+                                                      </block>
+                                                    </statement>
+                                                    <statement name="destination:RUMI">
+                                                      <block type="__link" id="124">
+                                                        <field name="link_to">RUMI / Lieutenant1Interface</field>
+                                                        <data>RUMI : 32 : 1</data>
+                                                      </block>
+                                                    </statement>
+                                                    <next>
+                                                      <block type="service_request$s" id="122">
+                                                        <field name="arguments_in_CSV">True</field>
+                                                        <field name="on_condition">True</field>
+                                                        <field name="#state_variable">+</field>
+                                                        <field name="#service">+</field>
+                                                        <field name="#RUMI">+</field>
+                                                        <field name="#RUMI">+</field>
+                                                        <field name="#state_variable">+</field>
+                                                        <field name="#sequence">+</field>
+                                                        <field name="#sequence">+</field>
+                                                        <statement name="request:service">
+                                                          <block type="__link" id="126">
+                                                            <field name="link_to">Service / Received Attack</field>
+                                                            <data>service : 91 : 1</data>
+                                                          </block>
+                                                        </statement>
+                                                        <statement name="source:RUMI">
+                                                          <block type="__link" id="128">
+                                                            <field name="link_to">RUMI / Lieutenant3Interface</field>
+                                                            <data>RUMI : 42 : 1</data>
+                                                          </block>
+                                                        </statement>
+                                                        <statement name="destination:RUMI">
+                                                          <block type="__link" id="127">
+                                                            <field name="link_to">RUMI / Lieutenant2Interface</field>
+                                                            <data>RUMI : 37 : 1</data>
+                                                          </block>
+                                                        </statement>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
